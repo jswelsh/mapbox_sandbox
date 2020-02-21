@@ -2,7 +2,7 @@ var accessToken = 'pk.eyJ1IjoianN3ZWxzaCIsImEiOiJjazFqdXczOHYyNWNxM25udDE4bGh3cG
 
 var tzButton = document.getElementById('tz-button');
 tzButton.onclick = getUserLocation;
-
+    
 function getUserLocation() {
   var loadingMessage = document.getElementById('loading-message');
   var returnMessage = document.getElementById('return-message');
@@ -24,4 +24,9 @@ function getUserLocation() {
       returnMessage.textContent = 'You are in the ' + userTimezone + ' timezone.';
     });
   }
+    function error() {
+      loadingMessage.parentNode.removeChild(loadingMessage);
+      returnMessage.textContent = 'Sorry, unable to determine your current location.';
+    }
+  navigator.geolocation.getCurrentPosition(success);
 }

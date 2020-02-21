@@ -15,6 +15,13 @@ function getUserLocation() {
     var loadingMessage = document.getElementById('loading-message');
     var returnMessage = document.getElementById('return-message');
     document.getElementById('loading-message').textContent = 'loading';
-
+    $.ajax({
+      method: 'GET',
+      url: query,
+    }).done(function(data) {
+      var userTimezone = data.features[0].properties.TZID;
+      loadingMessage.parentNode.removeChild(loadingMessage);
+      returnMessage.textContent = 'You are in the ' + userTimezone + ' timezone.';
+    });
   }
 }

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <title></title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+    <script async defer src='https://api.mapbox.com/mapbox-assembly/v0.21.2/assembly.js'></script>
+    <link href='https://api.mapbox.com/mapbox-assembly/v0.21.2/assembly.min.css' rel='stylesheet'>
+  </head>
+
+  <body>
+    <div class='mx-auto mt36 w600 prose'>
+      <h2>Timezone finder</h2>
+      <button id='tz-button' class='btn'>Find my timezone!</button>
+      <div class='mt12 ml12' id='textContainer'>
+        <p id='loading-message' class='inline-block round animation-pulse animation--infinite'></p>
+        <p id='return-message'></p>
+      </div>
+    </div>
+    <script type = "text/javascript" src = "script.js" ></script>
+    </script>
+  </body>
+</html>

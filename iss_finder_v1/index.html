@@ -2,10 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>ISS PubNub demo</title>
+  <script src="jquery.js" charset="utf-8"></script>
+  <script src="https://cdn.pubnub.com/pubnub-3.7.13.min.js"></script>
+  <!-- mapbox CDN -->
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <script src='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.js'></script>
+  <link href='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.css' rel='stylesheet' />
+  <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-  
+  <div id="map"></div>
+  <pre id='coordinates' class='ui-coordinates'></pre>
+  <script src="pubnub.js"></script>
+  <script type="text/javascript"></script>
 </body>
 </html>

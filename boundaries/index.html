@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <title>
+        Mapbox Enterprise Boundaries for BI
+    </title>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <!-- Mapbox GL-JS CSS -->
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' rel='stylesheet' />
+    <!-- Mapbox Assembly -->
+    <link href='https://api.mapbox.com/mapbox-assembly/v0.20.0/assembly.min.css' rel='stylesheet'>
+    <script async defer src='https://api.mapbox.com/mapbox-assembly/v0.20.0/assembly.js'></script>
+    <script type="text/javascript">
+    if (window.location.hostname === 'www.mapbox.com') {
+        ! function() {
+            var analytics = window.analytics = window.analytics || [];
+            if (!analytics.initialize)
+                if (analytics.invoked) window.console && console.error && console.error("Segment snippet included twice.");
+                else {
+                    analytics.invoked = !0;
+                    analytics.methods = ["trackSubmit", "trackClick", "trackLink", "trackForm", "pageview", "identify", "reset", "group", "track", "ready", "alias", "debug", "page", "once", "off", "on"];
+                    analytics.factory = function(t) {
+                        return function() {
+                            var e = Array.prototype.slice.call(arguments);
+                            e.unshift(t);
+                            analytics.push(e);
+                            return analytics
+                        }
+                    };
+                    for (var t = 0; t < analytics.methods.length; t++) {
+                        var e = analytics.methods[t];
+                        analytics[e] = analytics.factory(e)
+                    }
+                    analytics.load = function(t) {
+                        var e = document.createElement("script");
+                        e.type = "text/javascript";
+                        e.async = !0;
+                        e.src = ("https:" === document.location.protocol ? "https://" : "http://") + "cdn.segment.com/analytics.js/v1/" + t + "/analytics.min.js";
+                        var n = document.getElementsByTagName("script")[0];
+                        n.parentNode.insertBefore(e, n)
+                    };
+                    analytics.SNIPPET_VERSION = "4.0.0";
+                    analytics.load("fl0c8p240n");
+                    analytics.page();
+
+                    analytics.track('Viewed demo', {
+                        name: 'vt-polygons'
+                    });
+
+                    // Get currently logged in user on mapbox.com
+                    var xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function() {
+                        if (this.readyState == 4 && this.status == 200) {
+                            var resp = JSON.parse(xhttp.responseText);
+                            console.log(resp.id);
+                            analytics.identify(resp.id, {
+                                email: resp.email
+                            });
+                        }
+                    }
+                    xhttp.open("GET", "https://www.mapbox.com/api/session", true);
+                    xhttp.send();
+                }
+        }();
+    }
+    </script>
+</head>
+
+<body>
+    <div class='viewport-full relative clip'>
+        <div class="viewport-twothirds viewport-full-ml relative">
+            <div class='viewport-full relative' id='loading'>
+                <div class='flex-parent flex-parent--center-cross flex-parent--center-main absolute top right bottom left bg-darken10 z5'>
+                    <div class='flex-child loading--dark'></div>
+                </div>
+            </div>
+            <div id='map' class='absolute top left right bottom'></div>
+        </div>
+        <div class='absolute top-ml left z1 w-full w300-ml p12-ml'>
+            <div class='viewport-third h-auto-ml hmax-full bg-white round-ml shadow-darken5 scroll-auto py12 px12'>
+                <h3 class='txt-m txt-bold my6 mx6'>Mapbox Enterprise Boundaries</h3>
+                <h5 class='txt-s mb6 py6'>Seamless global choropleth map data and tools for your BI or Analytics application.</h5>
+                <div class='inline mb6 col--2'>
+                    <fieldset>
+                        <label class='txt-m txt-bold mb6'>Select admin level</label>
+                        <br>
+                        <div class='select-container py6'>
+                            <select id='selectLevel' class="select select--stroke select--stroke-darken75">
+                                <option value="admin-0">Admin-0</option>
+                                <option value="admin-1">Admin-1</option>
+                                <option value="admin-2">Admin-2</option>
+                                <option value="admin-3">Admin-3</option>
+                                <option value="admin-4">Admin-4</option>
+                                <option value="admin-5">Admin-5</option>
+                                <option value="post-1">Post-1</option>
+                                <option value="post-2">Post-2</option>
+                                <option value="post-3">Post-3</option>
+                                <option value="post-4">Post-4</option>
+                            </select>
+                            <div class="select-arrow"></div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class='flex-parent mb3 py6'>
+                    <fieldset>
+                        <label class='txt-m txt-bold mb6'>Select ISO Country Codes</label>
+                        <input type='text' id='selectCountry' placeholder="US" value='US' class='input border-r round-l' />
+                    </fieldset>
+                </div>
+                <div class='mb3 py6'>
+                    <fieldset>
+                        <label class='txt-m txt-bold mb6'>Select Color Palette</label>
+                        <div class='select-container'>
+                            <select id='selectColor' class="select select--stroke select--stroke-darken75">
+                                <option value="YlGnBu">Yellow-Green-Blue</option>
+                                <option value="RdPu">Red-Purple</option>
+                                <option value="YlOrRd">Yellow-Orange-Red</option>
+                            </select>
+                            <div class="select-arrow"></div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class='mb3 py12'>
+                    <input id='submitCountry' type='submit' value='Join & Render' class='btn btn--pill btn--pill-hc' />
+                </div>
+                <div class='mb3 py6'>
+                    <label class='checkbox-container mr12'>
+                        <input type='checkbox' id='checkbox-circle' />
+                        <div class="checkbox mr6">
+                            <svg class="icon">
+                                <use xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-check" /></use>
+                            </svg>
+                        </div>
+                        Show Centroids
+                    </label>
+                </div>
+                <div class='prose py6' id='featurestats' style='display:none'>
+                    <u1>
+                        <li><b>Total Features:</b> </li>
+                        <li><b>Render Time:</b> Unknown</li>
+                    </u1>
+                </div>
+                <footer class='py12 px12 bg-gray-faint txt-s'>
+                    <a href="https://blog.mapbox.com/introducing-mapbox-enterprise-boundaries-2fca4a36d8ba" class="txt-underline-on-hover link">Try Mapbox admin polygons in your app</a>
+                </footer>
+            </div>
+        </div>
+    </div>
+    <script src='bundle.js'></script>
+</body>
+
+</html>

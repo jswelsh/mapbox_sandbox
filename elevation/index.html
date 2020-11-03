@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8' />
+  <title>Find elevations with the Tilequery API</title>
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.css' rel='stylesheet' />
+  <script
+  src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    #map {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+    }
+    
+    .eleInfo {
+      position: absolute;
+      font-family: sans-serif;
+      margin-top: 5px;
+      margin-left: 5px;
+      padding: 5px;
+      width: 200px;
+      border: 2px solid black;
+      font-size: 20px;
+      color: #222;
+      background-color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id='map'></div>
+  <div class="eleInfo">
+    <div>Longitude: <span id='lng'></span></div>
+    <div>Latitude: <span id='lat'></span></div>
+    <div>Elevation: <span id='ele'></span></div>
+  </div>
+<script  src="script.js"></script>
+</body>
+
+</html>

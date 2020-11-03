@@ -10010,13 +10010,13 @@
     module.exports = require('events').EventEmitter;
     
     },{"events":11}],33:[function(require,module,exports){
-    exports = module.exports = require('./lib/_stream_readable.js');
+    exports = module.exports = require('./lib/_stream_readable.js.js');
     exports.Stream = exports;
     exports.Readable = exports;
-    exports.Writable = require('./lib/_stream_writable.js');
-    exports.Duplex = require('./lib/_stream_duplex.js');
-    exports.Transform = require('./lib/_stream_transform.js');
-    exports.PassThrough = require('./lib/_stream_passthrough.js');
+    exports.Writable = require('./lib/_stream_writable.js.js');
+    exports.Duplex = require('./lib/_stream_duplex.js.js');
+    exports.Transform = require('./lib/_stream_transform.js.js');
+    exports.PassThrough = require('./lib/_stream_passthrough.js.js');
     
     },{"./lib/_stream_duplex.js":26,"./lib/_stream_passthrough.js":27,"./lib/_stream_readable.js":28,"./lib/_stream_transform.js":29,"./lib/_stream_writable.js":30}],34:[function(require,module,exports){
     /*jslint vars: true*/
@@ -12176,4 +12176,3 @@
     }
     
     },{}]},{},[1]);
-    

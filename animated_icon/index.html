@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>Add an animated icon to the map</title>
+<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.5.0/mapbox-gl.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.5.0/mapbox-gl.css' rel='stylesheet' />
+<style>
+    body { margin:0; padding:0; }
+    #map { position:absolute; top:0; bottom:0; width:100%; }
+    .location {
+        text-align: center;     
+        z-index: 1;
+        position: absolute;
+        font-family: sans-serif;
+        margin-top: 5px;
+        margin-left: 5px;
+        padding: 5px;
+        width: 20%;
+        border: 2px solid black;
+        font-size: 20px;
+        font-weight: bold;
+        color: #222;
+        background-color: #fff;
+        border-radius: 3px;
+    }
+</style>
+</head>
+<body>
+    <div id='map'>
+        <div class='location'>
+            <p id='loading-message' ></p>
+            <p id='return-message'></p>
+        </div>
+    </div>
+
+    <script type = "text/javascript" src = "script.js"></script>
+</body>
+</html>
